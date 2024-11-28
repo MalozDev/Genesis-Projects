@@ -1,0 +1,101 @@
+/* Navbar Container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #282c34;
+    color: white;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    height: 50px;
+  }
+  
+  /* Menu Container */
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Links */
+  .navbar-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Dropdown Wrapper */
+  .navbar-dropdown {
+    position: relative;
+  }
+  
+  /* Button Styling for Dropdown */
+  .navbar-dropdown-button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+  
+  /* Arrow Rotation */
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .arrow.rotate {
+    transform: rotate(180deg); /* Rotate the arrow when open */
+  }
+  
+  /* Dropdown Content */
+  .navbar-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+  
+  .navbar-dropdown-content a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar-dropdown-content a:hover {
+    background-color: #61dafb;
+    color: black;
+  }
+  
+  /* Login Button */
+  .navbar-login-button {
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar-login-button:hover {
+    background-color: #21a1f1;
+  }
+  
