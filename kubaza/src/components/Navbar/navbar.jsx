@@ -1,112 +1,98 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './navbar.css'; // Import the corresponding CSS file
-import logo from '../../assets/KUBAZA-MARKET-LOGO-cb-edit.png'; // Import the logo
+import React, { useState, useRef, useEffect } from "react";
+import "./navbar.css"; // Import the corresponding CSS file
+import logo from "../../assets/KUBAZA-MARKET-LOGO-cb-edit.png"; // Import the logo
+import Icon from "../Icon/Icon";
 
 const Navbar = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
 
-  // Refs for dropdown buttons
   const categoriesButtonRef = useRef(null);
   const exploreButtonRef = useRef(null);
-  const navbarRef = useRef(null); // Reference to the navbar container
+  const navbarRef = useRef(null);
 
-  // Function to close all dropdowns
   const closeDropdowns = () => {
     setCategoriesOpen(false);
     setExploreOpen(false);
   };
 
   const toggleCategories = () => {
-    if (categoriesOpen) {
-      setCategoriesOpen(false); // Close categories if it's already open
-    } else {
-      setCategoriesOpen(true);
-      setExploreOpen(false); // Close explore when opening categories
-    }
+    setCategoriesOpen((prev) => !prev);
+    if (!categoriesOpen) setExploreOpen(false);
   };
 
   const toggleExplore = () => {
-    if (exploreOpen) {
-      setExploreOpen(false); // Close explore if it's already open
-    } else {
-      setExploreOpen(true);
-      setCategoriesOpen(false); // Close categories when opening explore
-    }
+    setExploreOpen((prev) => !prev);
+    if (!exploreOpen) setCategoriesOpen(false);
   };
 
-  // Close the dropdowns when clicking outside the navbar or the buttons
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        navbarRef.current && 
-        !navbarRef.current.contains(event.target) && 
-        !categoriesButtonRef.current.contains(event.target) && 
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target) &&
+        !categoriesButtonRef.current.contains(event.target) &&
         !exploreButtonRef.current.contains(event.target)
       ) {
-        closeDropdowns(); // Close all dropdowns if click is outside the navbar or buttons
+        closeDropdowns();
       }
     };
 
-    // Add event listener on component mount
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup event listener on component unmount
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   return (
     <nav className="navbar" ref={navbarRef}>
-      <img src={logo} alt="Logo" className="navbar-logo" />
-
-      <div className="navbar-menu">
-        {/* Categories Dropdown Button */}
-        <div className="navbar-dropdown">
-          <button 
-            className="navbar-dropdown-button" 
-            onClick={toggleCategories}
-            ref={categoriesButtonRef}
-          >
-            Categories 
-            <span className={`arrow ${categoriesOpen ? 'rotate' : ''}`}>▼</span>
-          </button>
-          {categoriesOpen && (
-            <div className="navbar-dropdown-content">
-              <a href="#tech">Technology</a>
-              <a href="#health">Health</a>
-              <a href="#education">Education</a>
-              <a href="#sports">Sports</a>
-              <a href="#entertainment">Entertainment</a>
-            </div>
-          )}
+      <div className="navbar-top">
+        <div className="navbar-left">
+          <img src={logo} alt="Kubaza Market Logo" className="navbar-logo" />
+          <span className="navbar-company-name">Kubaza Market</span>
         </div>
-
-        {/* Explore Dropdown Button */}
-        <div className="navbar-dropdown">
-          <button 
-            className="navbar-dropdown-button" 
-            onClick={toggleExplore}
-            ref={exploreButtonRef}
-          >
-            Explore
-            <span className={`arrow ${exploreOpen ? 'rotate' : ''}`}>▼</span>
-          </button>
-          {exploreOpen && (
-            <div className="navbar-dropdown-content">
-              <a href="#trending">Trending</a>
-              <a href="#new">What's New</a>
-              <a href="#top-picks">Top Picks</a>
-              <a href="#community">Community</a>
-              <a href="#events">Events</a>
-            </div>
-          )}
+        <div className="navbar-right">
+          <div className="search-container">
+            <Icon name="search" className="search-icon" size={20} />
+            <input
+              type="text"
+              placeholder="Search art or artist"
+              className="navbar-search"
+            />
+          </div>
+          <Icon name="chart" size="54" className="navbar-icon" />
+          <Icon name="user" size="54" className="navbar-icon" />
         </div>
-
-        {/* Sign In and Login */}
-        <a href="#sign-in" className="navbar-link">Sign In</a>
-        <button className="navbar-login-button">Login</button>
+      </div>
+      <div className="navbar-bottom">
+        <a href="#paintings" className="navbar-link">
+          Paintings
+        </a>
+        <a href="#photography" className="navbar-link">
+          Photography
+        </a>
+        <a href="#sculpture" className="navbar-link">
+          Sculpture
+        </a>
+        <a href="#drawings" className="navbar-link">
+          Drawings
+        </a>
+        <a href="#prints" className="navbar-link">
+          Prints
+        </a>
+        <a href="#inspiration" className="navbar-link">
+          Inspiration
+        </a>
+        <a href="#advisory" className="navbar-link">
+          Art Advisory
+        </a>
+        <a href="#trade" className="navbar-link">
+          Trade
+        </a>
+        <a href="#giftcard" className="navbar-link gift-link">
+          Gift Card
+        </a>
       </div>
     </nav>
   );

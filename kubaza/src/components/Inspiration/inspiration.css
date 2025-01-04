@@ -1,152 +1,173 @@
-/* Container styling */
+/* General Container */
 .inspiration-container {
   padding: 20px;
-  margin: 0 auto;
+  background-color: white;
+  font-family: Arial, sans-serif;
   max-width: 1200px;
-  text-align: center;
-  box-sizing: border-box;
+  margin: auto;
 }
 
-/* Header styling */
 .inspiration-header {
-  margin-bottom: 20px;
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-/* Grid layout */
-.inspiration-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted for spacing */
-  gap: 20px;
-  justify-items: center;
-  margin: 0 auto;
-  padding: 0;
-}
-
-/* Individual grid items */
+/* Individual Items */
 .inspiration-item {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin: 0 auto;
-  padding: 0;
+  width: 30%; /* Fixed width for 3 items per row */
+  margin: 10px 1.66%; /* Center items and allow spacing */
+  display: inline-block; /* Forces inline-block layout */
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px;
+  vertical-align: top;
+  text-align: left;
+  box-sizing: border-box;
+  position: relative; /* Allow price to be positioned */
 }
 
-/* Image styling */
 .inspiration-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image fills the container */
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Hover effect for images */
-.inspiration-item:hover .inspiration-image {
-  transform: scale(1.05);
-  filter: brightness(0.8);
-}
-
-/* Description on top-left (visible only when hovering) */
-.image-description {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 8px 12px;
+  width: 100%; /* Match the width of the container */
   border-radius: 5px;
-  font-size: 14px;
-  max-width: 80%;
-  word-wrap: break-word;
-  display: none; /* Hidden by default */
-  z-index: 2;
 }
 
-/* Show description on hover */
-.inspiration-item:hover .image-description {
-  display: block;
+/* Item Details */
+.item-details {
+  margin-top: 10px;
+  position: relative; /* Allow absolute positioning of price */
 }
 
-/* Add to cart on top-right (visible only when hovering) */
-.add-to-cart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #ff4d4d;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 14px;
+/* Left-Aligned Descriptions */
+.description {
+  margin: 0;
+}
+
+.item-title {
+  font-size: 18px;
   font-weight: bold;
-  display: none; /* Hidden by default */
-  z-index: 2;
+  color: #360a0a;
+  margin: 5px 0;
 }
 
-/* Show Add to Cart on hover */
-.inspiration-item:hover .add-to-cart {
-  display: block;
+.item-location,
+.item-dimensions,
+.item-artist {
+  font-size: 14px;
+  color: #181616;
+  margin: 2px 0;
 }
 
-/* Options menu on bottom-right (visible only when hovering) */
-.options-menu {
+/* Right-Aligned Price */
+.item-price {
   position: absolute;
-  bottom: 10px;
+  top: 0;
   right: 10px;
   font-size: 16px;
-  color: white;
-  cursor: pointer;
-  z-index: 2;
-  display: none; /* Hidden by default */
+  font-weight: bold;
+  color: #e74c3c;
+  text-align: right;
 }
 
-/* Three dots styling */
-.options-dots {
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 18px;
+/* Custom Heights for Individual Items */
+.item-1 .inspiration-image {
+  height: 250px;
 }
 
-/* Dropdown links */
-.options-dropdown {
-  display: none;
+.item-2 .inspiration-image {
+  height: 200px;
+}
+
+.item-3 .inspiration-image {
+  height: 300px;
+}
+
+.item-4 .inspiration-image {
+  height: 270px;
+}
+
+.item-5 .inspiration-image {
+  height: 230px;
+}
+
+.item-6 .inspiration-image {
+  height: 280px;
+}
+
+.item-7 .inspiration-image {
+  height: 240px;
+}
+
+.item-8 .inspiration-image {
+  height: 260px;
+}
+
+.item-9 .inspiration-image {
+  height: 290px;
+}
+
+.item-10 .inspiration-image {
+  height: 310px;
+}
+
+/* Hover Icons */
+.hover-icons {
   position: absolute;
-  bottom: 30px;
-  right: 0;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  overflow: hidden;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
 }
 
-.options-dropdown a {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: black;
-  font-size: 14px;
-  border-bottom: 1px solid #eee;
+.inspiration-item:hover .hover-icons {
+  opacity: 1; /* Visible on hover */
 }
 
-.options-dropdown a:last-child {
-  border-bottom: none;
+.icon {
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.options-dropdown a:hover {
-  background-color: #f0f0f0;
+.icon:hover {
+  background-color: #e74c3c;
+  color: white;
+  transform: scale(1.2);
 }
 
-/* Show dropdown on hover */
-.inspiration-item:hover .options-menu {
-  display: block;
+/* Hover Effect for the Image */
+.inspiration-item:hover {
+  transform: scale(1.05); /* Slightly enlarges the container */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adds shadow on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Consistent transition */
+  cursor: pointer;
 }
 
-/* Show dropdown links when options dots are hovered */
-.options-menu:hover .options-dropdown {
-  display: block;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inspiration-item {
+    width: 45%; /* 2 items per row */
+    margin: 10px 2.5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .inspiration-item {
+    width: 100%; /* Single column layout */
+    margin: 10px 0;
+  }
+
+  .item-price {
+    position: static; /* Stack the price below on small screens */
+    margin-top: 10px;
+    text-align: left; /* Align with descriptions */
+  }
 }

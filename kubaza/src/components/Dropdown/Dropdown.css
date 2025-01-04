@@ -1,0 +1,56 @@
+/* Dropdown container */
+.dropdown {
+  position: absolute;
+  top: 100%; /* Positioned below the link */
+  left: 0;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 10;
+  width: 400px; /* Adjust width as needed */
+  border-radius: 5px;
+}
+
+/* Dropdown sections */
+.dropdown-section {
+  margin-right: 20px; /* Space between sections */
+  flex: 1;
+}
+
+.dropdown-section h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dropdown-section p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.dropdown-section p:hover {
+  color: #007bff; /* Highlight text on hover */
+  text-decoration: underline;
+}
+
+/* Navbar link wrapper */
+.navbar-link-wrapper {
+  position: relative; /* Ensure dropdown is positioned relative to the link */
+}
+
+/* Navbar link */
+.navbar-link {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #007bff;
+}

@@ -21,38 +21,15 @@ const Intro = () => {
 
   return (
     <div className="intro-container">
-      <video className="intro-video" autoPlay muted loop>
-        <source src="your-video-url.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
       <div className="intro-content">
         <h1>Welcome to Kubaza Market</h1>
-        <p>Your one-stop shop for all your needs. Explore a variety of products!</p>
-
+        <h5>A place where creative showcase there work and art lovers find the art that speaks to them. Enjoy..</h5>
         <div className="search-bar-container">
           <input 
             type="text" 
             placeholder="Search products..." 
             className="search-bar" 
           />
-        </div>
-
-        <div className="products-carousel">
-          <button className="carousel-button prev" onClick={handlePrevSlide}>
-            &#8592; Prev
-          </button>
-          <div className="product-item">
-            <h3>{products[currentIndex].name}</h3>
-            <a href={products[currentIndex].link} className="product-link">
-              {/* Add icons here when you get them */}
-              {/* Example: <FaLaptop /> */}
-              {products[currentIndex].name} Product
-            </a>
-          </div>
-          <button className="carousel-button next" onClick={handleNextSlide}>
-            Next &#8594;
-          </button>
         </div>
       </div>
     </div>
