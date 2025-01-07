@@ -1,11 +1,25 @@
 import React from "react";
 import "./inspiration.css";
 
+// Import images
+import image6 from "../../assets/image6.jpg";
+import airConditioner from "../../assets/Air Conditioner.jpg";
+import coupleHugging from "../../assets/Couple hugging.webp";
+import image7 from "../../assets/image7.jpg";
+import greatRoom from "../../assets/Great room 1.webp";
+import image5 from "../../assets/image5.jpg";
+import image4 from "../../assets/image4.jpg";
+import living2 from "../../assets/LIVING 2.webp";
+import image9 from "../../assets/image9.jpg";
+import imageWebp from "../../assets/image.webp";
+import image2 from "../../assets/image2.jpg";
+import image3 from "../../assets/image3.jpg";
+
 const Inspiration = () => {
   const mediaContent = [
     {
       id: 1,
-      src: "/src/assets/image6.jpg",
+      src: image6,
       alt: "Image 1",
       title: "Living Room",
       dimensions: "150 W x 110 H x 5 D cm",
@@ -15,7 +29,7 @@ const Inspiration = () => {
     },
     {
       id: 2,
-      src: "/src/assets/Air Conditioner.jpg",
+      src: airConditioner,
       alt: "Image 2",
       title: "Air Conditioner",
       dimensions: "120 W x 90 H x 4 D cm",
@@ -25,7 +39,7 @@ const Inspiration = () => {
     },
     {
       id: 3,
-      src: "/src/assets/Couple hugging.webp",
+      src: coupleHugging,
       alt: "Image 3",
       title: "Couple Hugging",
       dimensions: "140 W x 120 H x 6 D cm",
@@ -35,7 +49,7 @@ const Inspiration = () => {
     },
     {
       id: 4,
-      src: "/src/assets/image7.jpg",
+      src: image7,
       alt: "Image 4",
       title: "Abstract Art",
       dimensions: "130 W x 110 H x 3 D cm",
@@ -45,7 +59,7 @@ const Inspiration = () => {
     },
     {
       id: 5,
-      src: "/src/assets/Great room 1.webp",
+      src: greatRoom,
       alt: "Image 5",
       title: "Ocean Breeze",
       dimensions: "160 W x 100 H x 4 D cm",
@@ -55,7 +69,7 @@ const Inspiration = () => {
     },
     {
       id: 6,
-      src: "/src/assets/image5.jpg",
+      src: image5,
       alt: "Image 6",
       title: "Mountain View",
       dimensions: "110 W x 80 H x 3 D cm",
@@ -65,7 +79,7 @@ const Inspiration = () => {
     },
     {
       id: 7,
-      src: "/src/assets/image4.jpg",
+      src: image4,
       alt: "Image 7",
       title: "City Lights",
       dimensions: "130 W x 95 H x 5 D cm",
@@ -75,7 +89,7 @@ const Inspiration = () => {
     },
     {
       id: 8,
-      src: "/src/assets/LIVING 2.webp",
+      src: living2,
       alt: "Image 8",
       title: "Golden Hour",
       dimensions: "125 W x 100 H x 4 D cm",
@@ -85,7 +99,7 @@ const Inspiration = () => {
     },
     {
       id: 9,
-      src: "/src/assets/image9.jpg",
+      src: image9,
       alt: "Image 9",
       title: "Serene Forest",
       dimensions: "140 W x 120 H x 5 D cm",
@@ -95,7 +109,7 @@ const Inspiration = () => {
     },
     {
       id: 10,
-      src: "/src/assets/image.webp",
+      src: imageWebp,
       alt: "Image 10",
       title: "Night Sky",
       dimensions: "150 W x 110 H x 6 D cm",
@@ -105,7 +119,7 @@ const Inspiration = () => {
     },
     {
       id: 11,
-      src: "/src/assets/image2.jpg",
+      src: image2,
       alt: "Image 11",
       title: "Sunset Over Ocean",
       dimensions: "120 W x 90 H x 5 D cm",
@@ -113,10 +127,9 @@ const Inspiration = () => {
       price: "ZMW 12,800",
       location: "Kenya",
     },
-
     {
       id: 12,
-      src: "/src/assets/image3.jpg",
+      src: image3,
       alt: "Image 12",
       title: "Mountain Peaks",
       dimensions: "140 W x 100 H x 7 D cm",
