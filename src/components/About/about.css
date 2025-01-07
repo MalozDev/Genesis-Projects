@@ -1,0 +1,62 @@
+/* about.css */
+
+.about-container {
+    padding: 20px;
+    color: #333;
+  }
+  
+  .about-header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
+    gap: 20px;
+    align-items: stretch; /* Ensure all items in the grid have the same height */
+  }
+  
+  .product-card {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Make sure content is spaced out evenly */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Add smooth transition */
+  }
+  
+  .product-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .product-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Hover effect for product cards */
+  .product-card:hover {
+    transform: scale(1.05); /* Slightly increase the size */
+    background-color: #e0e0e0; /* Darken the background slightly */
+    cursor: pointer; /* Change cursor to indicate interactivity */
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .products-grid {
+      grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+  }
+  
