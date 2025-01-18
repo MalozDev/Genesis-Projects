@@ -1,0 +1,151 @@
+/* Individual Category Item */
+.category-item {
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.category-item:hover {
+  transform: scale(1.05); /* Slightly enlarges the container */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adds shadow on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Consistent transition */
+  cursor: pointer;
+  .category-hover-icons {
+    visibility: visible;
+  }
+}
+/* Category Details Section */
+.category-item-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Description */
+.category-description p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.category-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.category-location {
+  font-size: 14px;
+  color: #777;
+}
+
+.category-dimensions {
+  font-size: 13px;
+  color: #999;
+}
+
+.category-artist {
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Price */
+.category-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Hover Icons Container */
+.category-hover-icons {
+  position: relative;
+  top: 40px;
+  left: 320px;
+  display: flex;
+  width: 90px;
+  border: none;
+  border-radius: 5px;
+  visibility: hidden;
+  background-color: white;
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Set size for the wrapper */
+  border-radius: 50%; /* Make the div round */
+  background-color: transparent; /* Default background */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+}
+
+/* Hover Effect for Icon Wrapper */
+.icon-wrapper:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+  transform: scale(1.1); /* Slightly enlarge the wrapper */
+}
+
+/* Style for Icons */
+.search-icon {
+  color: #333; /* Default icon color */
+  transition: color 0.3s ease;
+}
+
+.icon-wrapper:hover .search-icon {
+  color: #007bff; /* Change icon color on hover */
+}
+
+/* Category Container */
+.category-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #201c1c;
+  border-top: 1px solid #201c1c;
+  margin-top: 25px;
+}
+
+/* Main Content Area */
+.category-main {
+  flex: 1;
+  margin-left: 66px;
+}
+
+/* Header Section */
+.category-header {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #352626;
+}
+
+/* Grid Layout for Items */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.category-container {
+  display: flex;
+  padding: 55px;
+}
+
+/* Sidebar for the Filter */
+.category-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 2px solid #1f1d1d;
+  padding-right: 20px;
+}
