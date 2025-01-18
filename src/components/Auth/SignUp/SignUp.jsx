@@ -158,7 +158,7 @@ const SignUp = () => {
                 onChange={handleChange}
                 required
               />
-              <button type="button" onClick={togglePassword}>
+              <button class="toggle-btn" type="button" onClick={togglePassword}>
                 {passwordVisible ? "Hide" : "Show"}
               </button>
             </div>

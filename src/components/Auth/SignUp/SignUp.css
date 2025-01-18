@@ -127,3 +127,13 @@
 .login-text a:hover {
   text-decoration: underline;
 }
+
+.input-container {
+  display: flex;
+}
+.toggle-btn {
+  height: 19px;
+  position: relative;
+  top: 9px;
+  right: 50px;
+}
