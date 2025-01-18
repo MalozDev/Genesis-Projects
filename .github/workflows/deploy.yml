@@ -16,12 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: '20'  # Ensure this is 20 or later
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build and Deploy
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
