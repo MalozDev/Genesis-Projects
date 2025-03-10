@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import "./navbar.css";
 import logo from "../../assets/KUBAZA-MARKET-LOGO-cb-edit.png";
 import Icon from "../Icon/Icon";
-import Dropdown from "../Dropdown/Dropdown";
-import Modal from "../Modal/Modal";
-import SignUp from "../Auth/SignUp/SignUp";
-import Login from "../Auth/Login/Login";
+import Dropdown from "../Dropdown/Dropdown"; // Ensure this component is correctly implemented
 
 const navbarData = {
   paintings: {
@@ -55,24 +54,46 @@ const navbarData = {
   },
 };
 
-const Navbar = () => {
+const NavbarHome = () => {
+  const [user, setUser] = useState(null); // Store user info
   const [hoveredLink, setHoveredLink] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [showModal, setShowModal] = useState(null); // "signup" | "login" | null
   const navbarRef = useRef(null);
+  const navigate = useNavigate();
+  const auth = getAuth();
 
+  // Get user information from Firebase
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser || null); // Handle both logged-in and logged-out states
+    });
+
+    return () => unsubscribe(); // Cleanup on component unmount
+  }, [auth]);
+
+  // Handle sign out
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        navigate("/"); // Redirect to home page on sign out
+      })
+      .catch((error) => console.error("Sign Out Error:", error));
+  };
+
+  // Dropdown visibility handling
   const handleMouseEnter = (link) => {
     setHoveredLink(link);
     setDropdownVisible(true);
-    document.getElementById("main-content").classList.add("main-content-faded");
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.classList.add("main-content-faded");
   };
 
   const handleMouseLeave = () => {
     setHoveredLink(null);
     setDropdownVisible(false);
-    document
-      .getElementById("main-content")
-      .classList.remove("main-content-faded");
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.classList.remove("main-content-faded");
   };
 
   useEffect(() => {
@@ -80,32 +101,18 @@ const Navbar = () => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
         setHoveredLink(null);
         setDropdownVisible(false);
-        document
-          .getElementById("main-content")
-          .classList.remove("main-content-faded");
+        const mainContent = document.getElementById("main-content");
+        if (mainContent) mainContent.classList.remove("main-content-faded");
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleOpenModal = (type) => {
-    setShowModal(type);
-    document.body.style.overflow = "hidden"; // Prevent background scroll
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(null);
-    document.body.style.overflow = "auto";
-  };
-
   return (
     <nav className="navbar" ref={navbarRef}>
       <div className="navbar-top">
-        <div
-          className="navbar-left"
-          onClick={() => (window.location.href = "/")}
-        >
+        <div className="navbar-left" onClick={() => navigate("/")}>
           <img src={logo} alt="Kubaza Market Logo" className="navbar-logo" />
           <span className="navbar-company-name">Kubaza Market</span>
         </div>
@@ -118,20 +125,31 @@ const Navbar = () => {
               placeholder="Search art or artist"
               className="navbar-search"
             />
+            <div className="chart-div">
+              <div className="item-in-chart">
+                <p>6</p>
+              </div>
+              <Icon name="chart" size={16} className="chart-icon" />{" "}
+              <Link to="/checkout" className="navbar-link checkout-link">
+                Checkout
+              </Link>
+            </div>
           </div>
 
-          <button
-            className="navbar-button"
-            onClick={() => handleOpenModal("signup")}
-          >
-            <Icon name="user" size={6} /> Sign Up
-          </button>
-          <button
-            className="navbar-button"
-            onClick={() => handleOpenModal("login")}
-          >
-            <Icon name="login" size={6} /> Log In
-          </button>
+          {/* User's profile section */}
+          {user ? (
+            <div className="navbar-user">
+              <img
+                src={user.photoURL || "/default-avatar.png"} // Ensure a fallback avatar
+                alt="User Profile"
+                className="navbar-user-image"
+              />
+              <span className="navbar-username">{user.displayName}</span>
+              <button className="navbar-button" onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
 
@@ -159,14 +177,8 @@ const Navbar = () => {
           </div>
         )}
       </div>
-
-      {showModal && (
-        <Modal onClose={handleCloseModal}>
-          {showModal === "signup" ? <SignUp /> : <Login />}
-        </Modal>
-      )}
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarHome;

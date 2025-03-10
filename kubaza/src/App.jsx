@@ -1,27 +1,17 @@
-import React from "react";
-import Navbar from "./components/navbar/navbar"; // Correctly import Navbar component
-import Intro from "./components/Intro/intro";
-import About from "./components/About/about";
-import Inspiration from "./components/Inspiration/inspiration";
-import BlogsReviews from "./components/Reviews/blogsReviews";
-import Footer from "./components/Footer/footer";
-import LastRemarks from "./components/LastRemarks/lastRemarks";
-import Dropdown from "./components/Dropdown/Dropdown";
-import Icon from "./components/Icon/Icon";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import HomePage from "./pages/HomePage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Intro />
-      <About />
-      <Inspiration />
-      <BlogsReviews />
-      <LastRemarks />
-      <Footer />
-      <Dropdown />
-      <Icon />
-    </div>
+    <Router basename="/Genesis-Projects">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+      </Routes>
+    </Router>
   );
 };
 
