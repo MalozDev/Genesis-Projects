@@ -1,5 +1,7 @@
-import React from "react";
-import "./inspiration.css";
+import React, { useState } from "react";
+import "./Category.css";
+import Icon from "../Icon/Icon";
+import CategoryFilter from "./CategoryFilter";
 
 // Import images
 import image6 from "../../assets/image6.jpg";
@@ -15,7 +17,7 @@ import imageWebp from "../../assets/image.webp";
 import image2 from "../../assets/image2.jpg";
 import image3 from "../../assets/image3.jpg";
 
-const Inspiration = () => {
+const Category = () => {
   const mediaContent = [
     {
       id: 1,
@@ -139,33 +141,84 @@ const Inspiration = () => {
     },
   ];
 
+  const [filters, setFilters] = useState({
+    priceRange: [0, 20000],
+    selectedLocations: [],
+    searchQuery: "",
+  });
+
+  const handleFilterChange = (updatedFilters) => {
+    setFilters(updatedFilters);
+  };
+
+  const addToCart = (item) => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...storedCart, item];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    alert(`${item.title} has been added to your cart.`);
+  };
+
+  const filteredContent = mediaContent.filter((item) => {
+    const itemPrice = parseFloat(
+      item.price.replace("ZMW", "").replace(",", "").trim()
+    );
+    const matchesPrice =
+      itemPrice >= filters.priceRange[0] && itemPrice <= filters.priceRange[1];
+    const matchesLocation =
+      filters.selectedLocations.length === 0 ||
+      filters.selectedLocations.includes(item.location);
+    const matchesSearch =
+      filters.searchQuery === "" ||
+      item.title.toLowerCase().includes(filters.searchQuery.toLowerCase());
+
+    return matchesPrice && matchesLocation && matchesSearch;
+  });
+
   return (
-    <div className="inspiration-container">
-      <h2 className="inspiration-header">
-        Get inspired by the work done on Kubaza
-      </h2>
-      {mediaContent.map((item) => (
-        <div key={item.id} className={`inspiration-item item-${item.id}`}>
-          {/* Icons Div (hover effect) */}
-          <div className="hover-icons">
-            <span className="icon love">❤️</span>
-            <span className="icon chart">📊</span>
-            <span className="icon options">⚙️</span>
-          </div>
-          <img src={item.src} alt={item.alt} className="inspiration-image" />
-          <div className="item-details">
-            <div className="description">
-              <p className="item-title">{item.title}</p>
-              <p className="item-location">{item.location}</p>
-              <p className="item-dimensions">{item.dimensions}</p>
-              <p className="item-artist">{item.artist}</p>
+    <div className="category-container">
+      <div className="category-sidebar">
+        <CategoryFilter onFilterChange={handleFilterChange} />
+      </div>
+      <div className="category-main">
+        <h2 className="category-header">Category</h2>
+        <div className="category-grid">
+          {filteredContent.map((item) => (
+            <div
+              key={item.id}
+              className={`category-item category-item-${item.id}`}
+            >
+              <div className="category-hover-icons">
+                <div className="icon-wrapper" onClick={() => addToCart(item)}>
+                  <Icon name="add" className="search-icon" size={20} />
+                </div>
+                <div className="icon-wrapper">
+                  <Icon name="heart" className="search-icon" size={20} />
+                </div>
+                <div className="icon-wrapper">
+                  <Icon
+                    name="horizontalElipsis"
+                    className="search-icon"
+                    size={20}
+                  />
+                </div>
+              </div>
+
+              <img src={item.src} alt={item.alt} className="category-image" />
+              <div className="category-item-details">
+                <div className="category-description">
+                  <p className="category-title">{item.title}</p>
+                  <p className="category-location">{item.location}</p>
+                  <p className="category-dimensions">{item.dimensions}</p>
+                  <p className="category-artist">{item.artist}</p>
+                </div>
+                <p className="category-price">{item.price}</p>
+              </div>
             </div>
-            <p className="item-price">{item.price}</p>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
 
-export default Inspiration;
+export default Category;

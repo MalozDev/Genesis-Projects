@@ -1,0 +1,79 @@
+/* Category Filter Container */
+.category-filter {
+  border: 2px solid black;
+  padding: 55px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Filter Header */
+.category-filter h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Filter Sections */
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.filter-section label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Inputs and Checkboxes */
+.filter-section input[type="number"],
+.filter-section input[type="text"] {
+  width: 100%;
+  max-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.filter-section input[type="number"]:focus,
+.filter-section input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+.filter-section input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.filter-section div {
+  display: flex;
+  align-items: center;
+}
+
+/* Adjusted Spacing */
+.filter-section div input[type="checkbox"] + label {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .category-filter {
+    width: 100%;
+    padding: 15px;
+  }
+}

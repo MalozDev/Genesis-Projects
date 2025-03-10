@@ -1,0 +1,95 @@
+.checkout-container {
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+  }
+  
+  .checkout-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: center; /* Center items horizontally */
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 20px 0; /* Add vertical margin */
+  }
+  
+  .checkout-item {
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px; /* Space between items */
+    padding: 15px; /* Padding inside items */
+    width: calc(50% - 40px); /* Set width for two items per row, accounting for margins */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s; /* Smooth scaling on hover */
+  }
+  
+  .checkout-item:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
+  .checkout-image {
+    width: 80%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Rounded image corners */
+  }
+  
+  .checkout-details {
+    margin-top: 10px; /* Space above details */
+  }
+  
+  .checkout-title {
+    font-size: 1.2em; /* Larger title font */
+    font-weight: bold; /* Bold title */
+  }
+  
+  .checkout-price {
+    font-size: 1.1em; /* Slightly larger price font */
+  }
+  
+  .remove-button {
+    background-color: #ff8113; /* Remove button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth color transition */
+  }
+  
+  .remove-button:hover {
+    background-color: #ff9900; /* Darker shade on hover */
+  }
+  
+  .checkout-button {
+    background-color: #4caf50; /* Checkout button color */
+    color: white; /* Text color */
+    padding: 12px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1.1em; /* Larger font size */
+    margin-top: 20px; /* Space above the button */
+    transition: background-color 0.3s; /* Smooth color transition */
+  }
+  
+  .checkout-button:hover {
+    background-color: #388e3c; /* Darker shade on hover */
+  }
+  
+.selected-items {
+    width: 1000px;
+    border: 1px solid black;
+    margin-bottom: 56px;
+    padding: 25px;
+
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 15px;
+    color: orange;
+}
+
+.checkout-details p {
+    margin: 5px;
+}
